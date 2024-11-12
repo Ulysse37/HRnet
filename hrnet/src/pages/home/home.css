@@ -1,0 +1,15 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display: flex;
+}
+
+.main-ul {
+  margin-right: 130px;
+  margin-bottom: 15px;
+}
