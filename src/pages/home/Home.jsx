@@ -28,7 +28,9 @@ function Home() {
             <TextField label="Zip Code" id="zip-code" type="number" containerClassName="adress-list-elt"/>
           </ul>   
         </fieldset>
-        <SelectField label="Department" name="department" id="department" options={departments} containerClassName="department-select"/>
+        <ul>
+          <SelectField label="Department" name="department" id="department" options={departments} containerClassName="department-select"/>
+        </ul>  
         <button>Save</button>
       </form>
     </main>
