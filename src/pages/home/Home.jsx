@@ -2,6 +2,7 @@ import './home.css';
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import SelectField from '../../components/selectfield/Selectfield.jsx';
+import Datepicker from '../../components/datepicker/Datepicker.jsx';
 import { states, departments } from '../../assets/options.js';
 
 function Home() {
@@ -14,10 +15,18 @@ function Home() {
       </header>
       <form action="#" id="create-employee">
         <ul className='main-ul'>
-          <TextField label="First Name" id="first-name" type="text" />
-          <TextField label="Last Name" id="last-name" type="text"/>
-          <TextField label="Date of Birth" id="date-of-birth" type="text" />
-          <TextField label="Start Date" id="start-date" type="text"/>
+          <TextField label="First Name" id="first-name" type="text" labelCLassName="name-textfield"/>
+          <TextField label="Last Name" id="last-name" type="text" labelCLassName="name-textfield"/>
+          <fieldset className='date-fieldset'>
+            <legend className='date-fieldset-legend'>Date of Birth</legend>
+            <Datepicker />
+          </fieldset>
+          <fieldset className='date-fieldset'>
+            <legend className='date-fieldset-legend'>Start Date</legend>
+            <Datepicker />
+          </fieldset>
+          {/* <TextField label="Date of Birth" id="date-of-birth" type="text" />
+          <TextField label="Start Date" id="start-date" type="text"/> */}
         </ul>
         <fieldset className="address">
           <legend>Address</legend>

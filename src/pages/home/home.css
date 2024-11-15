@@ -13,3 +13,12 @@ label {
   margin-right: 130px;
   margin-bottom: 15px;
 }
+
+.date-fieldset {
+  border: none;
+}
+
+.date-fieldset-legend {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
