@@ -257,5 +257,5 @@ const departments = [
 
 module.exports = {
   states,
-  departments
+  departments,
 }

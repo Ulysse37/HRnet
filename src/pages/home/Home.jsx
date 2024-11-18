@@ -5,7 +5,17 @@ import SelectField from '../../components/selectfield/Selectfield.jsx';
 import Datepicker from '../../components/datepicker/Datepicker.jsx';
 import { states, departments } from '../../assets/options.js';
 
+/* import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+const options = [
+  'one', 'two', 'three'
+];
+const defaultOption = options[0]; */
+
 function Home() {
+  /* const _onSelect = (option) => {
+    console.log(option); 
+  }; */
   return (
     <main>
       <header>
@@ -25,14 +35,13 @@ function Home() {
             <legend className='date-fieldset-legend'>Start Date</legend>
             <Datepicker />
           </fieldset>
-          {/* <TextField label="Date of Birth" id="date-of-birth" type="text" />
-          <TextField label="Start Date" id="start-date" type="text"/> */}
         </ul>
         <fieldset className="address">
           <legend>Address</legend>
           <ul>
             <TextField label="Street" id="street" type="text" containerClassName="adress-list-elt"/>
             <TextField label="City" id="city" type="text" containerClassName="adress-list-elt"/>
+            {/* <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />; */}
             <SelectField label="State" name="state" id="state" options={states} />        
             <TextField label="Zip Code" id="zip-code" type="number" containerClassName="adress-list-elt"/>
           </ul>   
