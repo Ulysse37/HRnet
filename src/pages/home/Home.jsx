@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import SelectField from '../../components/selectfield/Selectfield.jsx';
 import Datepicker from '../../components/datepicker/Datepicker.jsx';
-import { states, departments } from '../../assets/options.js';
+import data from '../../assets/data.json';
+
+const { states, departments } = data;
 
 /* import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
