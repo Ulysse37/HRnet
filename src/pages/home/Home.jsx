@@ -1,9 +1,12 @@
 import './home.css';
+import { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import SelectField from '../../components/selectfield/Selectfield.jsx';
-import Datepicker from '../../components/datepicker/Datepicker.jsx';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import data from '../../assets/data.json';
+
 
 const { states, departments } = data;
 
@@ -18,6 +21,8 @@ function Home() {
   /* const _onSelect = (option) => {
     console.log(option); 
   }; */
+  const [startDate1, setStartDate1] = useState(null);
+  const [startDate2, setStartDate2] = useState(null);
   return (
     <main>
       <header>
@@ -31,11 +36,11 @@ function Home() {
           <TextField label="Last Name" id="last-name" type="text" labelCLassName="name-textfield"/>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <Datepicker />
+            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} />
           </fieldset>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Start Date</legend>
-            <Datepicker />
+            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} />
           </fieldset>
         </ul>
         <fieldset className="address">
