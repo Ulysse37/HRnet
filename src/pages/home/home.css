@@ -14,11 +14,34 @@ label {
   margin-bottom: 15px;
 }
 
-.date-fieldset {
+.date-fieldset, .department-fieldset, .state-fieldset {
   border: none;
 }
 
 .date-fieldset-legend {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.state-fieldset{
+  padding: 0;
+}
+
+.department-fieldset {
+  width: 280px;
+  margin-top: 10px;
+}
+
+.Dropdown-control {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 35px;
+  background-color: #F6F6F6;
+}
+
+.Dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

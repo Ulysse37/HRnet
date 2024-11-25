@@ -7,22 +7,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import data from '../../assets/data.json';
 
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 const { states, departments } = data;
-
-/* import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-const options = [
-  'one', 'two', 'three'
-];
-const defaultOption = options[0]; */
+const stateOptions = states.map(state => state.name); // créer un tableau avec le nom des états pour le donner au dropdown
+const departmentOptions = departments.map(department => department.name); // De même pour les departments 
 
 function Home() {
-  /* const _onSelect = (option) => {
-    console.log(option); 
-  }; */
+  const _onSelect = (option) => {
+    console.log(option.name); 
+  };
+
   const [startDate1, setStartDate1] = useState(null);
   const [startDate2, setStartDate2] = useState(null);
+
   return (
     <main>
       <header>
@@ -48,14 +47,19 @@ function Home() {
           <ul>
             <TextField label="Street" id="street" type="text" containerClassName="adress-list-elt"/>
             <TextField label="City" id="city" type="text" containerClassName="adress-list-elt"/>
-            {/* <Dropdown options={options} onChange={_onSelect} value={defaultOption} placeholder="Select an option" />; */}
-            <SelectField label="State" name="state" id="state" options={states} />        
+            <fieldset className='state-fieldset'>
+              <legend>State</legend>
+              <Dropdown options={stateOptions} onChange={_onSelect} value={stateOptions[0]} placeholder="Select an option" />
+            </fieldset>
+            {/* <SelectField label="State" name="state" id="state" options={states} />  */}       
             <TextField label="Zip Code" id="zip-code" type="number" containerClassName="adress-list-elt"/>
           </ul>   
         </fieldset>
-        <ul>
-          <SelectField label="Department" name="department" id="department" options={departments} containerClassName="department-select"/>
-        </ul>  
+        <fieldset className="department-fieldset">
+          <legend>Department</legend>
+          <Dropdown className="department-select" options={departmentOptions} onChange={_onSelect} value={departmentOptions[0]} placeholder="Select an option" />
+          {/* <SelectField label="Department" name="department" id="department" options={departments} containerClassName="department-select"/> */}
+        </fieldset>  
         <button>Save</button>
       </form>
     </main>
