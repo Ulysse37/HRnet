@@ -37,6 +37,10 @@ label {
   justify-content: flex-start;
   align-items: center;
   height: 35px;
+}
+
+.address .Dropdown-control, 
+.department-fieldset .Dropdown-control {
   background-color: #F6F6F6;
 }
 
