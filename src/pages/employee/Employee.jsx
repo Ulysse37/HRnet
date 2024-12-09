@@ -52,7 +52,8 @@ const fuzzySort = (rowA, rowB, columnId) => {
 
 
 function Employee() {
-  const employees = JSON.parse(localStorage.getItem('employees'));
+  
+  const employees = JSON.parse(localStorage.getItem('employees')); // récupère le tableau employees qui contient les clients crées
   console.log(employees);
 
   /* const rerender = React.useReducer(() => ({}), {})[1] */

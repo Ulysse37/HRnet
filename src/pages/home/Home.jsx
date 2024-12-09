@@ -14,22 +14,19 @@ const { states, departments } = data;
 const stateOptions = states.map(state => state.name); // créer un tableau avec le nom des états pour le donner au dropdown
 const departmentOptions = departments.map(department => department.name); // De même pour les departments 
 
-
-
 function Home() {
 
-  const [selectedStateOption, setSelectedStateOption] = useState(stateOptions[0]);
-  const [selectedDepartmentOption, setselectedDepartmentOption] = useState(departmentOptions[0]);
-  const _onSelectState = (option) => { // utilisé pour le dropdown
+  const [selectedStateOption, setSelectedStateOption] = useState(stateOptions[0]); // state dropdown états(régions)
+  const [selectedDepartmentOption, setselectedDepartmentOption] = useState(departmentOptions[0]); // state dropdown départements
+  const _onSelectState = (option) => { // utilisé pour le dropdown des states
     setSelectedStateOption(option.value);
-    /* console.log(option.name); */ 
   };
-  const _onSelectDepartment = (option) => { // utilisé pour le dropdown
+  const _onSelectDepartment = (option) => { // utilisé pour le dropdown des départements
     setselectedDepartmentOption(option.value);
-    /* console.log(option.name); */ 
   };
 
-
+  const [startDate1, setStartDate1] = useState(null); // State datepicker 1 
+  const [startDate2, setStartDate2] = useState(null); // State datepicker 2
   const [employees, setEmployees] = useState([]);
 
   const handleSubmit = (event) => { // Va ajouter dans un tableau employees tous les employee ajouté via le form
@@ -51,10 +48,6 @@ function Home() {
     console.log(employee);
     console.log(employees);
   };
-
-
-  const [startDate1, setStartDate1] = useState(null);
-  const [startDate2, setStartDate2] = useState(null);
 
   return (
     <main>
