@@ -42,8 +42,8 @@ function Home() {
     const employee = {
       firstName: event.target.elements.firstName.value,
       lastName: event.target.elements.lastName.value,
-      birthDate: startDate1,
-      startDate: startDate2,
+      birthDate: startDate1.toISOString().split('T')[0],
+      startDate: startDate2.toISOString().split('T')[0],
       street: event.target.elements.street.value,
       city: event.target.elements.city.value,
       state: selectedStateOption,
@@ -66,11 +66,11 @@ function Home() {
           <TextField label="Last Name" htmlFor="lastName" id="lastName" type="text" labelCLassName="name-textfield"/>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1} />
+            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1}/>
           </fieldset>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Start Date</legend>
-            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} value={startDate2} />
+            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} value={startDate2}/>
           </fieldset>
         </ul>
         <fieldset className="address">
