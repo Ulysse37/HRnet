@@ -1,9 +1,9 @@
 import './employee.css';
+import React, { useState, useEffect } from "react"
 import { NavLink } from 'react-router-dom';
 import FlecheAsc from '../../assets/sort_asc.png';
 import FlecheDesc from '../../assets/sort_desc.png';
 
-import React from "react"
 /* import ReactDOM from "react-dom/client" */
 import {
   flexRender,
@@ -52,6 +52,9 @@ const fuzzySort = (rowA, rowB, columnId) => {
 
 
 function Employee() {
+  const employees = JSON.parse(localStorage.getItem('employees'));
+  console.log(employees);
+
   /* const rerender = React.useReducer(() => ({}), {})[1] */
 
   const [columnFilters, setColumnFilters] = React.useState([])
@@ -87,7 +90,7 @@ function Employee() {
         cell: info => info.getValue()
       },
       { 
-        accessorKey: "dateOfBirth",
+        accessorKey: "birthDate",
         header: "Date of Birth",
         cell: info => info.getValue()
       },
@@ -115,7 +118,8 @@ function Employee() {
     []
   )
 
-  const [data, setData] = React.useState(() => makeData(5_000))
+  /* const [data, setData] = React.useState(() => makeData(5_000)) */
+  const [data, setData] = React.useState(employees);
   /* const refreshData = () => setData(_old => makeData(50_000)) //stress test */
 
   const table = useReactTable({

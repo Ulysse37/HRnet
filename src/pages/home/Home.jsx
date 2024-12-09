@@ -32,8 +32,8 @@ function Home() {
 
   const [employees, setEmployees] = useState([]);
 
-  const handleSubmit = (event) => {
-    /* event.preventDefault(); */
+  const handleSubmit = (event) => { // Va ajouter dans un tableau employees tous les employee ajouté via le form
+    event.preventDefault();
     const employee = {
       firstName: event.target.elements.firstName.value,
       lastName: event.target.elements.lastName.value,
@@ -44,9 +44,10 @@ function Home() {
       state: selectedStateOption,
       zipCode: event.target.elements.zipCode.value,
       department: selectedDepartmentOption
-      // ...
     };
     setEmployees([...employees, employee]);
+    localStorage.setItem('employees', JSON.stringify(employees));
+    /* localStorage.setItem('employees', JSON.stringify([...employees, employee]));  */
     console.log(employee);
     console.log(employees);
   };
