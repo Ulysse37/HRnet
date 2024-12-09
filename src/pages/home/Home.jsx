@@ -1,5 +1,5 @@
 import './home.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import SelectField from '../../components/selectfield/Selectfield.jsx';
@@ -27,7 +27,15 @@ function Home() {
 
   const [startDate1, setStartDate1] = useState(null); // State datepicker 1 
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
-  const [employees, setEmployees] = useState([]);
+
+  const [employees, setEmployees] = useState(() => {
+    const storedEmployees = localStorage.getItem('employees');
+    return storedEmployees ? JSON.parse(storedEmployees) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('employees', JSON.stringify(employees));
+  }, [employees]);
 
   const handleSubmit = (event) => { // Va ajouter dans un tableau employees tous les employee ajouté via le form
     event.preventDefault();
@@ -43,12 +51,8 @@ function Home() {
       department: selectedDepartmentOption
     };
     setEmployees([...employees, employee]);
-    localStorage.setItem('employees', JSON.stringify(employees));
-    /* localStorage.setItem('employees', JSON.stringify([...employees, employee]));  */
-    console.log(employee);
-    console.log(employees);
   };
-
+  
   return (
     <main>
       <header>
