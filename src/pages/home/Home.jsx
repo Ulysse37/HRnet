@@ -66,8 +66,8 @@ function Home() {
       </header>
       <form action="#" id="create-employee" onSubmit={handleSubmit}>
         <ul className='main-ul'>
-          <TextField label="First Name" htmlFor="firstName" id="firstName" type="text" labelCLassName="name-textfield"/>
-          <TextField label="Last Name" htmlFor="lastName" id="lastName" type="text" labelCLassName="name-textfield"/>
+          <TextField label="First Name" htmlFor="firstName" id="firstName" type="text" labelCLassName="name-textfield" required/>
+          <TextField label="Last Name" htmlFor="lastName" id="lastName" type="text" labelCLassName="name-textfield" required/>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Date of Birth</legend>
             <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1}/>
@@ -80,13 +80,13 @@ function Home() {
         <fieldset className="address">
           <legend>Address</legend>
           <ul>
-            <TextField label="Street" htmlFor="street" id="street" type="text" containerClassName="adress-list-elt"/>
-            <TextField label="City" htmlFor ="city" id="city" type="text" containerClassName="adress-list-elt"/>
+            <TextField label="Street" htmlFor="street" id="street" type="text" containerClassName="adress-list-elt" required/>
+            <TextField label="City" htmlFor ="city" id="city" type="text" containerClassName="adress-list-elt" required/>
             <fieldset className='state-fieldset'>
               <legend>State</legend>
               <Dropdown options={stateOptions} onChange={_onSelectState} value={selectedStateOption} placeholder="Select an option" />
             </fieldset>      
-            <TextField label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" containerClassName="adress-list-elt"/>
+            <TextField label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" containerClassName="adress-list-elt" required/>
           </ul>   
         </fieldset>
         <fieldset className="department-fieldset">
