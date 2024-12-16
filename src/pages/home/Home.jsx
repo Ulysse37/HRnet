@@ -70,11 +70,11 @@ function Home() {
           <TextField label="Last Name" htmlFor="lastName" id="lastName" type="text" labelCLassName="name-textfield" required/>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1}/>
+            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1} required/>
           </fieldset>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Start Date</legend>
-            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} value={startDate2}/>
+            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} value={startDate2} required/>
           </fieldset>
         </ul>
         <fieldset className="address">
