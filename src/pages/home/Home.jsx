@@ -4,10 +4,9 @@ import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import data from '../../assets/data.json';
-
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import data from '../../assets/data.json';
 
 const { states, departments } = data;
 const stateOptions = states.map(state => state.name); // créer un tableau avec le nom des états pour le donner au dropdown
