@@ -2,7 +2,6 @@ import './home.css';
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
-import SelectField from '../../components/selectfield/Selectfield.jsx';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import data from '../../assets/data.json';
@@ -28,21 +27,26 @@ function Home() {
   const [startDate1, setStartDate1] = useState(null); // State datepicker 1 
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
 
-  const [employees, setEmployees] = useState(() => {
+  const [employees, setEmployees] = useState(() => { // employees = state sotckant tableau contenant les employés crées
     const storedEmployees = localStorage.getItem('employees');
     return storedEmployees ? JSON.parse(storedEmployees) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem('employees', JSON.stringify(employees));
+    localStorage.setItem('employees', JSON.stringify(employees)); // Sauvegarde données employees chaque fois que le tableau est mit à jour
   }, [employees]);
+
+  /* useEffect(() => { // Supprime tableau employees quand user rafraîchit la page en suppr le cache
+    localStorage.removeItem('employees');
+  }, []); */
+  
 
   const handleSubmit = (event) => { // Va ajouter dans un tableau employees tous les employee ajouté via le form
     event.preventDefault();
     const employee = {
       firstName: event.target.elements.firstName.value,
       lastName: event.target.elements.lastName.value,
-      birthDate: startDate1.toISOString().split('T')[0],
+      birthDate: startDate1.toISOString().split('T')[0], // Change le format de date dans celui voulu
       startDate: startDate2.toISOString().split('T')[0],
       street: event.target.elements.street.value,
       city: event.target.elements.city.value,
@@ -81,15 +85,13 @@ function Home() {
             <fieldset className='state-fieldset'>
               <legend>State</legend>
               <Dropdown options={stateOptions} onChange={_onSelectState} value={selectedStateOption} placeholder="Select an option" />
-            </fieldset>
-            {/* <SelectField label="State" name="state" id="state" options={states} />  */}       
+            </fieldset>      
             <TextField label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" containerClassName="adress-list-elt"/>
           </ul>   
         </fieldset>
         <fieldset className="department-fieldset">
           <legend>Department</legend>
           <Dropdown className="department-select" options={departmentOptions} onChange={_onSelectDepartment} value={selectedDepartmentOption} placeholder="Select an option" />
-          {/* <SelectField label="Department" name="department" id="department" options={departments} containerClassName="department-select"/> */}
         </fieldset>  
         <button>Save</button>
       </form>
