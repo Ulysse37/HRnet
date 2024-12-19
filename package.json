@@ -11,7 +11,8 @@
     "react-dropdown": "^1.11.0",
     "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "ulysse37-modal-dialog-vite-package": "^0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
