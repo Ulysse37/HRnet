@@ -7,12 +7,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import data from '../../assets/data.json';
+/* import Modal from "ulysse37-plugin-modal/src/Modal"; */
 
 const { states, departments } = data;
 const stateOptions = states.map(state => state.name); // créer un tableau avec le nom des états pour le donner au dropdown
 const departmentOptions = departments.map(department => department.name); // De même pour les departments 
 
 function Home() {
+  
+  /* const [open, setOpen] = useState(false); // Code permettant l'ouverture et la fermeture de la modale de validation
+  const openModal = () => {
+    setOpen(true);
+  }
+  const closeModal = () => {
+    setOpen(false);
+  } */
 
   const [selectedStateOption, setSelectedStateOption] = useState(stateOptions[0]); // state dropdown états(régions)
   const [selectedDepartmentOption, setselectedDepartmentOption] = useState(departmentOptions[0]); // state dropdown départements
@@ -92,7 +101,8 @@ function Home() {
           <legend>Department</legend>
           <Dropdown className="department-select" options={departmentOptions} onChange={_onSelectDepartment} value={selectedDepartmentOption} placeholder="Select an option" />
         </fieldset>  
-        <button>Save</button>
+        <button /* onClick={openModal} */>Save</button>
+        {/* <Modal open={open} onClose={closeModal} message="Employee Created!"></Modal> */}
       </form>
     </main>
   );
