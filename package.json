@@ -12,7 +12,8 @@
     "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.13",
-    "ulysse37-modal-dialog-vite-package": "^0.0.2"
+    "ulysse37-modal-dialog-vite-package": "^0.0.2",
+    "modal-package": "file:../modal-package"
   },
   "scripts": {
     "start": "react-scripts start",
