@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import data from '../../assets/data.json';
-import { Modal } from "modal-package";
-import '../../../node_modules/modal-package/dist/style.css'; // css modale
+import { Modal } from "ulysse37-modal-package";
+import 'ulysse37-modal-package/dist/style.css'; // css modale
 
 const { states, departments } = data;
 const stateOptions = states.map(state => state.name); // créer un tableau avec le nom des états pour le donner au dropdown
