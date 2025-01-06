@@ -56,8 +56,8 @@ function Employee() {
   
   /* const employees = JSON.parse(localStorage.getItem('employees')); // récupère le tableau employees qui contient les clients crées
   console.log(employees); */
-  const employees = useSelector((state) => state.auth.user);
-  console.log('Liste des employés :', employees);
+  const employees = useSelector((state) => state.auth.employees);
+  console.log('employee page - Listes employés :', employees);
 
   /* const rerender = React.useReducer(() => ({}), {})[1] */
 

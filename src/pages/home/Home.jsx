@@ -1,6 +1,6 @@
 import './home.css';
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addEmployee } from '../../redux/actions';
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
@@ -38,19 +38,9 @@ function Home() {
   const [startDate1, setStartDate1] = useState(null); // State datepicker 1 
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
 
-  /* const [employees, setEmployees] = useState(() => { // employees = state sotckant tableau contenant les employés crées
-    const storedEmployees = localStorage.getItem('employees');
-    return storedEmployees ? JSON.parse(storedEmployees) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('employees', JSON.stringify(employees)); // Sauvegarde données employees chaque fois que le tableau est mit à jour
-  }, [employees]); */
-
-  /* useEffect(() => { // Supprime tableau employees quand user rafraîchit la page en suppr le cache
-    localStorage.removeItem('employees');
-  }, []); */
   const dispatch = useDispatch();
+  /* const employees = useSelector((state) => state.auth.employees); */
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
@@ -61,9 +51,7 @@ function Home() {
   const [zipCode, setZipCode] = useState('');
   const [department, setDepartment] = useState('');
 
-  const handleSubmit = (event) => {
-    /* console.log('handleSubmit est défini'); */
-     // Va ajouter dans un tableau employees tous les employee ajouté via le form
+  const handleSubmit = (event) => {// Va ajouter dans un tableau employees tous les employee ajouté via le form
     const employee = {
       firstName,
       lastName,
@@ -75,21 +63,8 @@ function Home() {
       zipCode,
       department,
     };
-    console.log('Informations de l\'employé :', employee);
+    console.log('Homes page - Informations de l\'employé :', employee);
     dispatch(addEmployee(employee));
-   /*  event.preventDefault();
-    const employee = {
-      firstName: event.target.elements.firstName.value,
-      lastName: event.target.elements.lastName.value,
-      birthDate: startDate1.toISOString().split('T')[0], // Change le format de date dans celui voulu
-      startDate: startDate2.toISOString().split('T')[0],
-      street: event.target.elements.street.value,
-      city: event.target.elements.city.value,
-      state: selectedStateOption,
-      zipCode: event.target.elements.zipCode.value,
-      department: selectedDepartmentOption
-    };
-    setEmployees([...employees, employee]); */
   };
   
   return (
@@ -104,7 +79,9 @@ function Home() {
           <TextField  
             label="First Name" htmlFor="firstName" id="firstName" 
             type="text" labelCLassName="name-textfield" 
-            onChange={(e) => setFirstName(e.target.value)} 
+            onChange={(e) =>  {
+              setFirstName(e.target.value);
+            }}
             required
           />
           <TextField  

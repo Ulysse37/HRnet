@@ -1,10 +1,10 @@
 import './textfield.css';
 
-function TextField({ label, id, type, required, labelCLassName, containerClassName }) {
+function TextField({ label, id, type, required, labelCLassName, containerClassName, onChange }) {
   return (
     <li className={containerClassName}>
       <label className={labelCLassName} htmlFor={id}>{label}</label>
-      <input type={type} id={id} required={required}/>
+      <input type={type} id={id} required={required}  onChange={onChange}/>
     </li>
   )
 }
