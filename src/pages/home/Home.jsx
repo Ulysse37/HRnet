@@ -1,5 +1,7 @@
 import './home.css';
 import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../../redux/actions';
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
 import DatePicker from "react-datepicker";
@@ -36,21 +38,46 @@ function Home() {
   const [startDate1, setStartDate1] = useState(null); // State datepicker 1 
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
 
-  const [employees, setEmployees] = useState(() => { // employees = state sotckant tableau contenant les employés crées
+  /* const [employees, setEmployees] = useState(() => { // employees = state sotckant tableau contenant les employés crées
     const storedEmployees = localStorage.getItem('employees');
     return storedEmployees ? JSON.parse(storedEmployees) : [];
   });
 
   useEffect(() => {
     localStorage.setItem('employees', JSON.stringify(employees)); // Sauvegarde données employees chaque fois que le tableau est mit à jour
-  }, [employees]);
+  }, [employees]); */
 
   /* useEffect(() => { // Supprime tableau employees quand user rafraîchit la page en suppr le cache
     localStorage.removeItem('employees');
   }, []); */
+  const dispatch = useDispatch();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [department, setDepartment] = useState('');
 
-  const handleSubmit = (event) => { // Va ajouter dans un tableau employees tous les employee ajouté via le form
-    event.preventDefault();
+  const handleSubmit = (event) => {
+    /* console.log('handleSubmit est défini'); */
+     // Va ajouter dans un tableau employees tous les employee ajouté via le form
+    const employee = {
+      firstName,
+      lastName,
+      birthDate,
+      startDate,
+      street,
+      city,
+      state,
+      zipCode,
+      department,
+    };
+    console.log('Informations de l\'employé :', employee);
+    dispatch(addEmployee(employee));
+   /*  event.preventDefault();
     const employee = {
       firstName: event.target.elements.firstName.value,
       lastName: event.target.elements.lastName.value,
@@ -62,7 +89,7 @@ function Home() {
       zipCode: event.target.elements.zipCode.value,
       department: selectedDepartmentOption
     };
-    setEmployees([...employees, employee]);
+    setEmployees([...employees, employee]); */
   };
   
   return (
@@ -74,32 +101,92 @@ function Home() {
       </header>
       <form action="#" id="create-employee" onSubmit={handleSubmit}>
         <ul className='main-ul'>
-          <TextField label="First Name" htmlFor="firstName" id="firstName" type="text" labelCLassName="name-textfield" required/>
-          <TextField label="Last Name" htmlFor="lastName" id="lastName" type="text" labelCLassName="name-textfield" required/>
+          <TextField  
+            label="First Name" htmlFor="firstName" id="firstName" 
+            type="text" labelCLassName="name-textfield" 
+            onChange={(e) => setFirstName(e.target.value)} 
+            required
+          />
+          <TextField  
+            label="Last Name" htmlFor="lastName" id="lastName" 
+            type="text" labelCLassName="name-textfield" 
+            onChange={(e) => setLastName(e.target.value)} 
+            required
+          />
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <DatePicker selected={startDate1} onChange={(date) => setStartDate1(date)} value={startDate1} required/>
+            <DatePicker 
+              selected={startDate1} 
+              onChange={(date) => {
+                setStartDate1(date);
+                setBirthDate(date.toISOString().split('T')[0]);
+              }}
+              value={startDate1} 
+              required
+            />
           </fieldset>
           <fieldset className='date-fieldset'>
             <legend className='date-fieldset-legend'>Start Date</legend>
-            <DatePicker selected={startDate2} onChange={(date) => setStartDate2(date)} value={startDate2} required/>
+            <DatePicker
+              selected={startDate2}
+              onChange={(date) => {
+                setStartDate2(date);
+                setStartDate(date.toISOString().split('T')[0]);
+              }}
+              value={startDate2}
+              required
+            />
           </fieldset>
         </ul>
         <fieldset className="address">
           <legend>Address</legend>
           <ul>
-            <TextField label="Street" htmlFor="street" id="street" type="text" containerClassName="adress-list-elt" required/>
-            <TextField label="City" htmlFor ="city" id="city" type="text" containerClassName="adress-list-elt" required/>
+            <TextField 
+              label="Street" htmlFor="street" id="street" type="text" 
+              containerClassName="adress-list-elt" 
+              onChange={(e) => setStreet(e.target.value)} 
+              required 
+            />
+            <TextField 
+              label="City" htmlFor ="city" id="city" type="text" 
+              containerClassName="adress-list-elt" 
+              onChange={(e) => setCity(e.target.value)} 
+              required
+            />
             <fieldset className='state-fieldset'>
               <legend>State</legend>
-              <Dropdown options={stateOptions} onChange={_onSelectState} value={selectedStateOption} placeholder="Select an option" />
+              <Dropdown
+                options={stateOptions}
+                onChange={(option) => {
+                  _onSelectState(option);
+                  setState(option.value);
+                }}
+                value={selectedStateOption}
+                placeholder="Select an option"
+              />
+             {/*  <Dropdown options={stateOptions} onChange={_onSelectState} value={selectedStateOption} placeholder="Select an option" /> */}
             </fieldset>      
-            <TextField label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" containerClassName="adress-list-elt" required/>
+            <TextField 
+              label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" 
+              containerClassName="adress-list-elt" 
+              onChange={(e) => setZipCode(e.target.value)} 
+              required
+            />
           </ul>   
         </fieldset>
         <fieldset className="department-fieldset">
           <legend>Department</legend>
-          <Dropdown className="department-select" options={departmentOptions} onChange={_onSelectDepartment} value={selectedDepartmentOption} placeholder="Select an option" />
+          <Dropdown
+            className="department-select"
+            options={departmentOptions}
+            onChange={(option) => {
+              _onSelectDepartment(option);
+              setDepartment(option.value);
+            }}
+            value={selectedDepartmentOption}
+            placeholder="Select an option"
+          />
+          {/* <Dropdown className="department-select" options={departmentOptions} onChange={_onSelectDepartment} value={selectedDepartmentOption} placeholder="Select an option" /> */}
         </fieldset>  
         <button onClick={openModal}>Save</button>
         <Modal open={open} onClose={closeModal} message="Employee Created!"></Modal>

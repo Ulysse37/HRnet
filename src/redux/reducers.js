@@ -22,6 +22,7 @@ const authSlice =  createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addEmployee.fulfilled, (state, action) => {
+        console.log('état mit à jour :', state);
         state.user = action.payload;
         state.error = null;
       })

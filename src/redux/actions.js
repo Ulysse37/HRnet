@@ -1,15 +1,13 @@
-import { createAsyncThunk, createAction  } from '@reduxjs/toolkit';
+import { createAsyncThunk  } from '@reduxjs/toolkit';
 
 export const addEmployee = createAsyncThunk(
   'auth/addEmployee',
-  async (_, { rejectWithValue }) => {
+  async (employee, { rejectWithValue }) => {
+    console.log('Action addEmployee déclenchée');
     try {
 
-      localStorage.removeItem('token'); // suppression des tokens pour la déconnexion
-
-      return null;
+      return employee;
     } catch (error) {
-
       return rejectWithValue(error.message);
     }
   }

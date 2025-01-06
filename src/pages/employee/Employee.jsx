@@ -1,5 +1,6 @@
 import './employee.css';
 import React, { useState, useEffect } from "react"
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import FlecheAsc from '../../assets/sort_asc.png';
 import FlecheDesc from '../../assets/sort_desc.png';
@@ -53,8 +54,10 @@ const fuzzySort = (rowA, rowB, columnId) => {
 
 function Employee() {
   
-  const employees = JSON.parse(localStorage.getItem('employees')); // récupère le tableau employees qui contient les clients crées
-  console.log(employees);
+  /* const employees = JSON.parse(localStorage.getItem('employees')); // récupère le tableau employees qui contient les clients crées
+  console.log(employees); */
+  const employees = useSelector((state) => state.auth.user);
+  console.log('Liste des employés :', employees);
 
   /* const rerender = React.useReducer(() => ({}), {})[1] */
 
