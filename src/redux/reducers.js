@@ -18,6 +18,9 @@ const authSlice =  createSlice({
         /* state.user = action.payload; */
         state.error = null;
       })
+      .addCase(addEmployee.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 

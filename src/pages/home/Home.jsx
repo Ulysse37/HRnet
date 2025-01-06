@@ -59,9 +59,9 @@ function Home() {
       startDate,
       street,
       city,
-      state,
+      state: selectedStateOption,
       zipCode,
-      department,
+      department: selectedDepartmentOption,
     };
     console.log('Homes page - Informations de l\'employé :', employee);
     dispatch(addEmployee(employee));
@@ -134,6 +134,7 @@ function Home() {
               <legend>State</legend>
               <Dropdown
                 options={stateOptions}
+                defaultValue={selectedStateOption}
                 onChange={(option) => {
                   _onSelectState(option);
                   setState(option.value);
@@ -156,6 +157,7 @@ function Home() {
           <Dropdown
             className="department-select"
             options={departmentOptions}
+            defaultValue={selectedDepartmentOption}
             onChange={(option) => {
               _onSelectDepartment(option);
               setDepartment(option.value);
