@@ -64,7 +64,7 @@ function Home() {
       department: selectedDepartmentOption,
     };
     console.log('Homes page - Informations de l\'employé :', employee);
-    dispatch(addEmployee(employee));
+    dispatch(addEmployee(employee)); // action qui va ajouter l'employé à la liste
   };
   
   return (
@@ -142,7 +142,6 @@ function Home() {
                 value={selectedStateOption}
                 placeholder="Select an option"
               />
-             {/*  <Dropdown options={stateOptions} onChange={_onSelectState} value={selectedStateOption} placeholder="Select an option" /> */}
             </fieldset>      
             <TextField 
               label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" 
@@ -165,7 +164,6 @@ function Home() {
             value={selectedDepartmentOption}
             placeholder="Select an option"
           />
-          {/* <Dropdown className="department-select" options={departmentOptions} onChange={_onSelectDepartment} value={selectedDepartmentOption} placeholder="Select an option" /> */}
         </fieldset>  
         <button onClick={openModal}>Save</button>
         <Modal open={open} onClose={closeModal} message="Employee Created!"></Modal>

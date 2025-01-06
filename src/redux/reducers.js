@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addEmployee } from '../redux/actions';
 
 const initialState = {
-  employees: [],
+  employees: [], // liste contenant tous les employés crées
 };
 
 const authSlice =  createSlice({
