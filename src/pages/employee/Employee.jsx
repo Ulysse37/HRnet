@@ -1,11 +1,10 @@
 import './employee.css';
-import React, { useState, useEffect } from "react"
+import React from "react"
+import { useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import FlecheAsc from '../../assets/sort_asc.png';
 import FlecheDesc from '../../assets/sort_desc.png';
-
-/* import ReactDOM from "react-dom/client" */
 import {
   flexRender,
   getCoreRowModel,
@@ -18,8 +17,6 @@ import {
 
 // A TanStack fork of Kent C. Dodds' match-sorter library that provides ranking information
 import { rankItem, compareItems } from "@tanstack/match-sorter-utils"
-
-import { makeData } from "./makeData"
 
 // Define a custom fuzzy filter function that will apply ranking info to rows (using match-sorter utils)
 const fuzzyFilter = (row, columnId, value, addMeta) => {
@@ -54,8 +51,6 @@ const fuzzySort = (rowA, rowB, columnId) => {
 
 function Employee() {
   
-  /* const employees = JSON.parse(localStorage.getItem('employees')); // récupère le tableau employees qui contient les clients crées
-  console.log(employees); */
   const employees = useSelector((state) => state.auth.employees);
   console.log('employee page - Listes employés :', employees);
 
@@ -122,9 +117,8 @@ function Employee() {
     []
   )
 
-  /* const [data, setData] = React.useState(() => makeData(5_000)) */
   const [data, setData] = React.useState(employees);
-  /* const refreshData = () => setData(_old => makeData(50_000)) //stress test */
+  /* const refreshData = () => setData(_old => employees(50_000)) //stress test */
 
   const table = useReactTable({
     data,
@@ -208,10 +202,6 @@ function Employee() {
                               ) : header.column.getIsSorted() === "desc" ? (
                                 <img src={FlecheDesc} alt="Desc" />
                               ) : null}
-                            {/* {{
-                              asc: " 🔼",
-                              desc: " 🔽"
-                            }[header.column.getIsSorted()] ?? null} */}
                           </div>
                         </>
                       )}

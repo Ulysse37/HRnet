@@ -1,6 +1,6 @@
 import './home.css';
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { addEmployee } from '../../redux/actions';
 import { NavLink } from 'react-router-dom';
 import TextField from '../../components/textfield/Textfield.jsx';
