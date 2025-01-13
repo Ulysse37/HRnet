@@ -52,6 +52,7 @@ function Home() {
   const [department, setDepartment] = useState('');
 
   const handleSubmit = (event) => {// Va ajouter dans un tableau employees tous les employee ajouté via le form
+    event.preventDefault();
     const employee = {
       firstName,
       lastName,
@@ -65,6 +66,21 @@ function Home() {
     };
     console.log('Homes page - Informations de l\'employé :', employee);
     dispatch(addEmployee(employee)); // action qui va ajouter l'employé à la liste
+
+    // Réinitialise les états
+    setFirstName('');
+    setLastName('');
+    setBirthDate('');
+    setStartDate('');
+    setStreet('');
+    setCity('');
+    setState('');
+    setZipCode('');
+    setDepartment('');
+    setSelectedStateOption(stateOptions[0]);
+    setselectedDepartmentOption(departmentOptions[0]);
+    setStartDate1(null);
+    setStartDate2(null);
   };
   
   return (
@@ -79,14 +95,17 @@ function Home() {
           <TextField  
             label="First Name" htmlFor="firstName" id="firstName" 
             type="text" labelCLassName="name-textfield" 
-            onChange={(e) =>  {
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)} 
+            /* onChange={(e) =>  {
               setFirstName(e.target.value);
-            }}
+            }} */
             required
           />
           <TextField  
             label="Last Name" htmlFor="lastName" id="lastName" 
             type="text" labelCLassName="name-textfield" 
+            value={lastName}
             onChange={(e) => setLastName(e.target.value)} 
             required
           />
@@ -121,12 +140,14 @@ function Home() {
             <TextField 
               label="Street" htmlFor="street" id="street" type="text" 
               containerClassName="adress-list-elt" 
+              value={street}
               onChange={(e) => setStreet(e.target.value)} 
               required 
             />
             <TextField 
               label="City" htmlFor ="city" id="city" type="text" 
               containerClassName="adress-list-elt" 
+              value={city}
               onChange={(e) => setCity(e.target.value)} 
               required
             />
@@ -146,6 +167,7 @@ function Home() {
             <TextField 
               label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" 
               containerClassName="adress-list-elt" 
+              value={zipCode}
               onChange={(e) => setZipCode(e.target.value)} 
               required
             />
