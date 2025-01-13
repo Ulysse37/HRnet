@@ -52,7 +52,21 @@ function Home() {
   const [department, setDepartment] = useState('');
 
   const handleSubmit = (event) => {// Va ajouter dans un tableau employees tous les employee ajouté via le form
-    event.preventDefault();
+    event.preventDefault(); // évite que la page ne se recharge à la validation du formulaire
+    if ( // Si un des champs manquant, impossibilité de valider le formulaire
+      firstName === '' ||
+      lastName === '' ||
+      birthDate === '' ||
+      startDate === '' ||
+      street === '' ||
+      city === '' ||
+      state === '' ||
+      zipCode === '' ||
+      department === ''
+    ) {
+      return;
+    }
+
     const employee = {
       firstName,
       lastName,
@@ -67,7 +81,7 @@ function Home() {
     console.log('Homes page - Informations de l\'employé :', employee);
     dispatch(addEmployee(employee)); // action qui va ajouter l'employé à la liste
 
-    // Réinitialise les états
+    // Réinitialise les états pour vider les champs après validation
     setFirstName('');
     setLastName('');
     setBirthDate('');
@@ -81,6 +95,9 @@ function Home() {
     setselectedDepartmentOption(departmentOptions[0]);
     setStartDate1(null);
     setStartDate2(null);
+
+    // Affiche modale de validation
+    openModal();
   };
   
   return (
@@ -97,9 +114,6 @@ function Home() {
             type="text" labelCLassName="name-textfield" 
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)} 
-            /* onChange={(e) =>  {
-              setFirstName(e.target.value);
-            }} */
             required
           />
           <TextField  
@@ -187,7 +201,7 @@ function Home() {
             placeholder="Select an option"
           />
         </fieldset>  
-        <button onClick={openModal}>Save</button>
+        <button type="submit">Save</button>
         <Modal open={open} onClose={closeModal} message="Employee Created!"></Modal>
       </form>
     </main>
