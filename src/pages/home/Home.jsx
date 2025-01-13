@@ -116,6 +116,7 @@ function Home() {
             onChange={(e) => setFirstName(e.target.value)} 
             required
           />
+
           <TextField  
             label="Last Name" htmlFor="lastName" id="lastName" 
             type="text" labelCLassName="name-textfield" 
@@ -123,30 +124,40 @@ function Home() {
             onChange={(e) => setLastName(e.target.value)} 
             required
           />
-          <fieldset className='date-fieldset'>
-            <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <DatePicker 
-              selected={startDate1} 
-              onChange={(date) => {
-                setStartDate1(date);
-                setBirthDate(date.toISOString().split('T')[0]);
-              }}
-              value={startDate1} 
-              required
-            />
-          </fieldset>
-          <fieldset className='date-fieldset'>
-            <legend className='date-fieldset-legend'>Start Date</legend>
-            <DatePicker
-              selected={startDate2}
-              onChange={(date) => {
-                setStartDate2(date);
-                setStartDate(date.toISOString().split('T')[0]);
-              }}
-              value={startDate2}
-              required
-            />
-          </fieldset>
+          <li>
+            <fieldset className='date-fieldset'>
+              {/* <legend className='date-fieldset-legend'>Date of Birth</legend> */}
+              <label className='date-fieldset-legend'>
+                Date of Birth
+                <DatePicker 
+                  selected={startDate1} 
+                  onChange={(date) => {
+                    setStartDate1(date);
+                    setBirthDate(date.toISOString().split('T')[0]);
+                  }}
+                  value={startDate1} 
+                  required
+                />
+              </label>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset className='date-fieldset'>
+              {/* <legend className='date-fieldset-legend'>Start Date</legend> */}
+              <label >
+                Start Date
+                <DatePicker
+                selected={startDate2}
+                onChange={(date) => {
+                  setStartDate2(date);
+                  setStartDate(date.toISOString().split('T')[0]);
+                }}
+                value={startDate2}
+                required
+              />
+              </label>
+            </fieldset>
+          </li>
         </ul>
         <fieldset className="address">
           <legend>Address</legend>
@@ -165,19 +176,21 @@ function Home() {
               onChange={(e) => setCity(e.target.value)} 
               required
             />
-            <fieldset className='state-fieldset'>
-              <legend>State</legend>
-              <Dropdown
-                options={stateOptions}
-                defaultValue={selectedStateOption}
-                onChange={(option) => {
-                  _onSelectState(option);
-                  setState(option.value);
-                }}
-                value={selectedStateOption}
-                placeholder="Select an option"
-              />
-            </fieldset>      
+            <li>
+              <fieldset className='state-fieldset'>
+                <legend>State</legend>
+                <Dropdown
+                  options={stateOptions}
+                  defaultValue={selectedStateOption}
+                  onChange={(option) => {
+                    _onSelectState(option);
+                    setState(option.value);
+                  }}
+                  value={selectedStateOption}
+                  placeholder="Select an option"
+                />
+              </fieldset>    
+            </li>  
             <TextField 
               label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" 
               containerClassName="adress-list-elt" 
