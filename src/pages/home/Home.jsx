@@ -116,7 +116,6 @@ function Home() {
             onChange={(e) => setFirstName(e.target.value)} 
             required
           />
-
           <TextField  
             label="Last Name" htmlFor="lastName" id="lastName" 
             type="text" labelCLassName="name-textfield" 
@@ -126,26 +125,22 @@ function Home() {
           />
           <li>
             <fieldset className='date-fieldset'>
-              {/* <legend className='date-fieldset-legend'>Date of Birth</legend> */}
-              <label className='date-fieldset-legend'>
-                Date of Birth
-                <DatePicker 
-                  selected={startDate1} 
-                  onChange={(date) => {
-                    setStartDate1(date);
-                    setBirthDate(date.toISOString().split('T')[0]);
-                  }}
-                  value={startDate1} 
-                  required
-                />
-              </label>
+              <label className='date-fieldset-legend' htmlFor="birthDate">Date of Birth</label>
+              <DatePicker 
+                selected={startDate1} 
+                onChange={(date) => {
+                  setStartDate1(date);
+                  setBirthDate(date.toISOString().split('T')[0]);
+                }}
+                value={startDate1} 
+                id='birthDate'
+                required
+              />
             </fieldset>
           </li>
           <li>
-            <fieldset className='date-fieldset'>
-              {/* <legend className='date-fieldset-legend'>Start Date</legend> */}
-              <label >
-                Start Date
+            <fieldset className='date-fieldset startdate-fieldset'>
+              <label className='date-fieldset-legend startdate-label' htmlFor="startDate">Start Date</label>
                 <DatePicker
                 selected={startDate2}
                 onChange={(date) => {
@@ -153,9 +148,9 @@ function Home() {
                   setStartDate(date.toISOString().split('T')[0]);
                 }}
                 value={startDate2}
+                id='startDate'
                 required
               />
-              </label>
             </fieldset>
           </li>
         </ul>

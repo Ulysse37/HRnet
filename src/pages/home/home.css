@@ -23,6 +23,14 @@ label {
   margin-bottom: 5px;
 }
 
+.startdate-fieldset {
+  padding: 0;
+}
+
+.startdate-label {
+  margin-left: 15px;
+}
+
 .state-fieldset{
   padding: 0;
 }
