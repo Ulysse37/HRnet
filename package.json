@@ -1,7 +1,7 @@
 {
   "name": "hrnet",
   "version": "0.1.0",
-  "homepage": "https://ulysse37.github.io/HRnet",
+  "homepage": "https://ulysse37.github.io/HRnet/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@tanstack/match-sorter-utils": "^8.19.4",
