@@ -269,7 +269,7 @@ function Employee() {
           </button>
         </div>
       </div>
-      <NavLink to='/HRnet/'>Home</NavLink>
+      <NavLink to='/'>Home</NavLink>
     </main>
   )
 }
