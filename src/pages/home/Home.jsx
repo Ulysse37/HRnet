@@ -104,7 +104,7 @@ function Home() {
     <main>
       <header>
         <h1>HRnet</h1>
-          <NavLink to='/employee-list'>View Current Employees</NavLink>
+          <NavLink to='/HRnet/employee-list'>View Current Employees</NavLink>
         <h2>Create Employee</h2>
       </header>
       <form action="#" id="create-employee" onSubmit={handleSubmit}>
