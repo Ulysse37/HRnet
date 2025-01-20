@@ -11,10 +11,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename='/HRnet'>
+      <Router /* basename='/HRnet' */>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/employee-list" element={<Employee />}></Route>
+          <Route path="/HRnet/" element={<Home />}></Route>
+          <Route path="/HRnet/employee-list" element={<Employee />}></Route>
         </Routes>
       </Router>
     </Provider>
