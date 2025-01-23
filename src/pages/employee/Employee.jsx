@@ -157,6 +157,7 @@ function Employee() {
       <div className="p-2">
         <div className='entries-search-position'>
           <select
+              aria-label="Nombre d'entrées à afficher"
               value={table.getState().pagination.pageSize}
               onChange={e => {
                 table.setPageSize(Number(e.target.value))
