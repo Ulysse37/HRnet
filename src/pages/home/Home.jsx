@@ -60,9 +60,8 @@ function Home() {
       startDate === '' ||
       street === '' ||
       city === '' ||
-      state === '' ||
-      zipCode === '' ||
-      department === ''
+      zipCode === '' 
+
     ) {
       return;
     }
