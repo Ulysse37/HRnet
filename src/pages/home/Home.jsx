@@ -39,7 +39,6 @@ function Home() {
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
 
   const dispatch = useDispatch();
-  /* const employees = useSelector((state) => state.auth.employees); */
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -47,9 +46,7 @@ function Home() {
   const [startDate, setStartDate] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
-  const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [department, setDepartment] = useState('');
 
   const handleSubmit = (event) => {// Va ajouter dans un tableau employees tous les employee ajouté via le form
     event.preventDefault(); // évite que la page ne se recharge à la validation du formulaire
@@ -87,9 +84,7 @@ function Home() {
     setStartDate('');
     setStreet('');
     setCity('');
-    setState('');
     setZipCode('');
-    setDepartment('');
     setSelectedStateOption(stateOptions[0]);
     setselectedDepartmentOption(departmentOptions[0]);
     setStartDate1(null);
@@ -178,7 +173,6 @@ function Home() {
                   defaultValue={selectedStateOption}
                   onChange={(option) => {
                     _onSelectState(option);
-                    setState(option.value);
                   }}
                   value={selectedStateOption}
                   placeholder="Select an option"
@@ -202,7 +196,6 @@ function Home() {
             defaultValue={selectedDepartmentOption}
             onChange={(option) => {
               _onSelectDepartment(option);
-              setDepartment(option.value);
             }}
             value={selectedDepartmentOption}
             placeholder="Select an option"
