@@ -61,10 +61,6 @@ function Employee() {
 
   const columns = React.useMemo(
     () => [
-      /* {
-        accessorKey: "id",
-        filterFn: "equalsString" //note: normal non-fuzzy filter column - exact match required
-      }, */
       {
         accessorKey: "firstName",
         header: "First Name",
@@ -157,6 +153,7 @@ function Employee() {
       <div className="p-2">
         <div className='entries-search-position'>
           <select
+              aria-label="Nombre d'entrées à afficher"
               value={table.getState().pagination.pageSize}
               onChange={e => {
                 table.setPageSize(Number(e.target.value))

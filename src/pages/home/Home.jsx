@@ -39,7 +39,6 @@ function Home() {
   const [startDate2, setStartDate2] = useState(null); // State datepicker 2
 
   const dispatch = useDispatch();
-  /* const employees = useSelector((state) => state.auth.employees); */
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -47,9 +46,7 @@ function Home() {
   const [startDate, setStartDate] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
-  const [state, setState] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [department, setDepartment] = useState('');
 
   const handleSubmit = (event) => {// Va ajouter dans un tableau employees tous les employee ajouté via le form
     event.preventDefault(); // évite que la page ne se recharge à la validation du formulaire
@@ -60,9 +57,8 @@ function Home() {
       startDate === '' ||
       street === '' ||
       city === '' ||
-      state === '' ||
-      zipCode === '' ||
-      department === ''
+      zipCode === '' 
+
     ) {
       return;
     }
@@ -78,7 +74,7 @@ function Home() {
       zipCode,
       department: selectedDepartmentOption,
     };
-    console.log('Homes page - Informations de l\'employé :', employee);
+    /* console.log('Homes page - Informations de l\'employé :', employee); */
     dispatch(addEmployee(employee)); // action qui va ajouter l'employé à la liste
 
     // Réinitialise les états pour vider les champs après validation
@@ -88,9 +84,7 @@ function Home() {
     setStartDate('');
     setStreet('');
     setCity('');
-    setState('');
     setZipCode('');
-    setDepartment('');
     setSelectedStateOption(stateOptions[0]);
     setselectedDepartmentOption(departmentOptions[0]);
     setStartDate1(null);
@@ -123,30 +117,36 @@ function Home() {
             onChange={(e) => setLastName(e.target.value)} 
             required
           />
-          <fieldset className='date-fieldset'>
-            <legend className='date-fieldset-legend'>Date of Birth</legend>
-            <DatePicker 
-              selected={startDate1} 
-              onChange={(date) => {
-                setStartDate1(date);
-                setBirthDate(date.toISOString().split('T')[0]);
-              }}
-              value={startDate1} 
-              required
-            />
-          </fieldset>
-          <fieldset className='date-fieldset'>
-            <legend className='date-fieldset-legend'>Start Date</legend>
-            <DatePicker
-              selected={startDate2}
-              onChange={(date) => {
-                setStartDate2(date);
-                setStartDate(date.toISOString().split('T')[0]);
-              }}
-              value={startDate2}
-              required
-            />
-          </fieldset>
+          <li>
+            <fieldset className='date-fieldset'>
+              <label className='date-fieldset-legend' htmlFor="birthDate">Date of Birth</label>
+              <DatePicker 
+                selected={startDate1} 
+                onChange={(date) => {
+                  setStartDate1(date);
+                  setBirthDate(date.toISOString().split('T')[0]);
+                }}
+                value={startDate1} 
+                id='birthDate'
+                required
+              />
+            </fieldset>
+          </li>
+          <li>
+            <fieldset className='date-fieldset startdate-fieldset'>
+              <label className='date-fieldset-legend startdate-label' htmlFor="startDate">Start Date</label>
+                <DatePicker
+                selected={startDate2}
+                onChange={(date) => {
+                  setStartDate2(date);
+                  setStartDate(date.toISOString().split('T')[0]);
+                }}
+                value={startDate2}
+                id='startDate'
+                required
+              />
+            </fieldset>
+          </li>
         </ul>
         <fieldset className="address">
           <legend>Address</legend>
@@ -165,19 +165,20 @@ function Home() {
               onChange={(e) => setCity(e.target.value)} 
               required
             />
-            <fieldset className='state-fieldset'>
-              <legend>State</legend>
-              <Dropdown
-                options={stateOptions}
-                defaultValue={selectedStateOption}
-                onChange={(option) => {
-                  _onSelectState(option);
-                  setState(option.value);
-                }}
-                value={selectedStateOption}
-                placeholder="Select an option"
-              />
-            </fieldset>      
+            <li>
+              <fieldset className='state-fieldset'>
+                <legend>State</legend>
+                <Dropdown
+                  options={stateOptions}
+                  defaultValue={selectedStateOption}
+                  onChange={(option) => {
+                    _onSelectState(option);
+                  }}
+                  value={selectedStateOption}
+                  placeholder="Select an option"
+                />
+              </fieldset>    
+            </li>  
             <TextField 
               label="Zip Code" htmlFor="zipCode" id="zipCode" type="number" 
               containerClassName="adress-list-elt" 
@@ -195,7 +196,6 @@ function Home() {
             defaultValue={selectedDepartmentOption}
             onChange={(option) => {
               _onSelectDepartment(option);
-              setDepartment(option.value);
             }}
             value={selectedDepartmentOption}
             placeholder="Select an option"
