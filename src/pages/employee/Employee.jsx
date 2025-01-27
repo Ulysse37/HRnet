@@ -61,10 +61,6 @@ function Employee() {
 
   const columns = React.useMemo(
     () => [
-      /* {
-        accessorKey: "id",
-        filterFn: "equalsString" //note: normal non-fuzzy filter column - exact match required
-      }, */
       {
         accessorKey: "firstName",
         header: "First Name",

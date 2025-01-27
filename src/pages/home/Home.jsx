@@ -74,7 +74,7 @@ function Home() {
       zipCode,
       department: selectedDepartmentOption,
     };
-    console.log('Homes page - Informations de l\'employé :', employee);
+    /* console.log('Homes page - Informations de l\'employé :', employee); */
     dispatch(addEmployee(employee)); // action qui va ajouter l'employé à la liste
 
     // Réinitialise les états pour vider les champs après validation
